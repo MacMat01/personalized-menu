@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<semantic:definitions xmlns:semantic="https://www.omg.org/spec/DMN/20211108/MODEL/"  xmlns:sdmn="https://www.omg.org/spec/SDMN/"  xmlns:triso="http://www.trisotech.com/2015/triso/modeling"  xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"  xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/"  xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"  xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn"  xmlns:feel="https://www.omg.org/spec/DMN/20211108/FEEL/"  xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase"  xmlns:drools="http://www.drools.org/kie/dmn/1.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:rss="http://purl.org/rss/2.0/"  xmlns:openapi="https://openapis.org/omg/extension/1.0"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"   xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0"  xmlns="http://www.trisotech.com/definitions/_d89314f3-bcda-4ead-9461-f7c3d02d80b0" id="_d89314f3-bcda-4ead-9461-f7c3d02d80b0" name="Drawing 1" namespace="http://www.trisotech.com/definitions/_d89314f3-bcda-4ead-9461-f7c3d02d80b0" exporter="Decision Modeler" exporterVersion="9.7.3" xml:lang="en" triso:logoChoice="Default">
+    <semantic:extensionElements/>
+    <semantic:itemDefinition name="Type_Room" label="Type Room">
+        <semantic:typeRef>string</semantic:typeRef>
+    </semantic:itemDefinition>
+    <semantic:decisionService id="_d89314f3-bcda-4ead-9461-f7c3d02d80b0_DS" name="Whole Model Decision Service" triso:dynamicDecisionService="true" triso:wholeModelService="true">
+        <semantic:variable name="Whole Model Decision Service" id="_d89314f3-bcda-4ead-9461-f7c3d02d80b0_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_71d43a3d-1bf5-4834-a076-c66d12a28a44"/>
+        <semantic:inputData href="#_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17"/>
+        <semantic:inputData href="#_17592706-1ec0-4989-98e8-75c04809842d"/>
+    </semantic:decisionService>
+    <semantic:decisionService id="_b508a9a4-bef9-41ee-bad6-39755eade0af_DS" name="Diagram Page 1" triso:dynamicDecisionService="true">
+        <semantic:variable name="Diagram Page 1" id="_b508a9a4-bef9-41ee-bad6-39755eade0af_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_71d43a3d-1bf5-4834-a076-c66d12a28a44"/>
+        <semantic:inputData href="#_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17"/>
+        <semantic:inputData href="#_17592706-1ec0-4989-98e8-75c04809842d"/>
+    </semantic:decisionService>
+    <semantic:inputData id="_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17" name="People" triso:readOnly="false">
+        <semantic:variable name="People" id="_7d232a07-091d-44b8-a958-41f9ca0417cd" typeRef="number"/>
+    </semantic:inputData>
+    <semantic:inputData id="_17592706-1ec0-4989-98e8-75c04809842d" name="Type room" triso:readOnly="false">
+        <semantic:variable name="Type room" id="_2ef216bc-aacb-4000-9174-11205c84193f" typeRef="string"/>
+    </semantic:inputData>
+    <semantic:decision id="_71d43a3d-1bf5-4834-a076-c66d12a28a44" name="Decide Price" triso:readOnly="false">
+        <semantic:variable name="Decide Price" id="_6c024475-3761-4f03-bf49-f6fccc8ae610" typeRef="number"/>
+        <semantic:informationRequirement id="_bdc3552b-ab0d-4f04-8f4c-34c71a08c927" triso:readOnly="false">
+            <semantic:requiredInput href="#_17592706-1ec0-4989-98e8-75c04809842d"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_ef4d8557-a988-4b2e-a9fd-ba5c07d5dc07" triso:readOnly="false">
+            <semantic:requiredInput href="#_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17"/>
+        </semantic:informationRequirement>
+        <semantic:decisionTable triso:descriptionVisible="false" id="_60d87ac5-bfb8-42fa-a253-0c2de51d2a97" hitPolicy="UNIQUE" outputLabel="Decide Price" typeRef="number" triso:expressionId="_4b72d3e9-6c72-407b-b155-c66d08d479d2">
+            <semantic:input id="_51ea7f4b-3fec-4e19-ac38-9fde6b21899d" label="Type room">
+                <semantic:inputExpression typeRef="string">
+                    <semantic:text>Type room</semantic:text>
+                </semantic:inputExpression>
+                <semantic:inputValues triso:constraintsType="enumeration">
+                    <semantic:text>"conference room","meeting room"</semantic:text>
+                </semantic:inputValues>
+            </semantic:input>
+            <semantic:input id="_dcbcaa65-331e-4b70-8328-9f75b40cb789" label="People">
+                <semantic:inputExpression typeRef="number">
+                    <semantic:text>People</semantic:text>
+                </semantic:inputExpression>
+            </semantic:input>
+            <semantic:output id="_f51b8a5f-3396-4739-8462-d7a70589b5f0" triso:allowNull="true"/>
+            <semantic:annotation name="Description"/>
+            <semantic:rule id="_054b4319-eea2-46d1-b5f6-bc0330c8e2b1">
+                <semantic:inputEntry id="_cd71cf38-766a-4804-87be-940f90fa8b47">
+                    <semantic:text>"meeting room"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_aee65879-6a4a-4225-bc37-076c216476cd">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_678b4d78-d725-4021-b264-335bf80f588f">
+                    <semantic:text>500</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_a432f863-7b66-477e-bd92-954e8255b2fd">
+                <semantic:inputEntry id="_608811f4-2298-4db2-98d6-e36524407a4e">
+                    <semantic:text>"conference room"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_944c57d9-d22e-4722-b304-ab77f9b1aeba">
+                    <semantic:text>&lt;=30</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_2a3673c1-1b5a-4a54-a254-c00c4a96234d">
+                    <semantic:text>800</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_019219e9-c7ee-44fb-8c73-e04fb3a7887b">
+                <semantic:inputEntry id="_2555024f-4751-4824-a821-3242fa3296af">
+                    <semantic:text>"conference room"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_6c5a1faf-b2ef-4ab1-a077-7e940dc06969">
+                    <semantic:text>&gt;30</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_2e713a6f-da2d-4a6b-9c4f-13e631c8b597">
+                    <semantic:text>1200</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+        </semantic:decisionTable>
+    </semantic:decision>
+    <semantic:knowledgeSource id="_9b5b68f9-56a3-4dc3-9d5d-d291866cfe87" name="Price list" triso:readOnly="false">
+        <semantic:authorityRequirement id="_2072c018-8bc2-43d6-86b9-47b1c4159a58" triso:readOnly="false">
+            <semantic:requiredDecision href="#_71d43a3d-1bf5-4834-a076-c66d12a28a44"/>
+        </semantic:authorityRequirement>
+    </semantic:knowledgeSource>
+    <semantic:decisionService id="_d15de214-15c8-4f8e-9a36-61a0c9d29ca3" name="Decision Service Decide Price" triso:readOnly="false">
+        <semantic:variable name="Decision Service Decide Price" id="_02930505-bc98-4a18-aa73-4a79b08b1f30" typeRef="Any"/>
+        <semantic:outputDecision href="#_71d43a3d-1bf5-4834-a076-c66d12a28a44"/>
+        <semantic:inputData href="#_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17"/>
+        <semantic:inputData href="#_17592706-1ec0-4989-98e8-75c04809842d"/>
+    </semantic:decisionService>
+    <dmndi:DMNDI>
+        <dmndi:DMNDiagram id="_b508a9a4-bef9-41ee-bad6-39755eade0af" triso:modelElementRef="_d93e3c7a-88c2-4ff5-aa45-16b1cee526d1" name="Page 1">
+            <di:extension/>
+            <dmndi:Size height="1050" width="1533.4823386209978"/>
+            <dmndi:DMNShape id="_3dd9e61e-1910-4387-9860-89a84d2856f8" dmnElementRef="_d8036a9a-bcd7-4d5b-ac74-94dbfa11aa17">
+                <dc:Bounds x="547.6531985757213" y="437.75235034470177" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_75d6c550-1947-402e-8372-3fe60fc5d914" dmnElementRef="_17592706-1ec0-4989-98e8-75c04809842d">
+                <dc:Bounds x="324.1708559369283" y="447.75234063880265" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_fbd67429-8225-428c-b39a-8f563379c31d" dmnElementRef="_71d43a3d-1bf5-4834-a076-c66d12a28a44">
+                <dc:Bounds x="429.4120294374137" y="345.75233006399975" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_58f23ee7-d59c-495e-8281-e203021d4c67" dmnElementRef="_9b5b68f9-56a3-4dc3-9d5d-d291866cfe87">
+                <dc:Bounds x="224.91202413392392" y="340.77364246894854" width="99.99999999999994" height="69.95735931396484"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNEdge id="_7cb8903a-59d1-45fa-8cad-5be363408f35" dmnElementRef="_bdc3552b-ab0d-4f04-8f4c-34c71a08c927">
+                <di:waypoint x="391.9088281964498" y="447.75234063880265"/>
+                <di:waypoint x="505.9120294374137" y="405.75233006399975"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_efe98124-7936-4ed4-b19d-12eb7697b0a0" dmnElementRef="_ef4d8557-a988-4b2e-a9fd-ba5c07d5dc07">
+                <di:waypoint x="615.3911708352427" y="437.75235034470177"/>
+                <di:waypoint x="505.9120294374137" y="405.75233006399975"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_612a36ca-cf82-4f59-9e5f-f1b61f451359" dmnElementRef="_2072c018-8bc2-43d6-86b9-47b1c4159a58">
+                <di:waypoint x="429.4120294374137" y="375.75233006399975"/>
+                <di:waypoint x="324.91202413392386" y="375.75232212593096"/>
+                <dmndi:DMNLabel sharedStyle="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0"/>
+            </dmndi:DMNEdge>
+        </dmndi:DMNDiagram>
+        <dmndi:DMNStyle id="LS_d89314f3-bcda-4ead-9461-f7c3d02d80b0_0" fontFamily="arial,helvetica,sans-serif" fontSize="11" fontBold="false" fontItalic="false" fontUnderline="false" fontStrikeThrough="false"/>
+    </dmndi:DMNDI>
+</semantic:definitions>
