@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<semantic:definitions xmlns:semantic="https://www.omg.org/spec/DMN/20211108/MODEL/"  xmlns:sdmn="https://www.omg.org/spec/SDMN/"  xmlns:triso="http://www.trisotech.com/2015/triso/modeling"  xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"  xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/"  xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"  xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn"  xmlns:feel="https://www.omg.org/spec/DMN/20211108/FEEL/"  xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase"  xmlns:drools="http://www.drools.org/kie/dmn/1.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:rss="http://purl.org/rss/2.0/"  xmlns:openapi="https://openapis.org/omg/extension/1.0"  xmlns:xsd="http://www.w3.org/2001/XMLSchema"   xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0"  xmlns="http://www.trisotech.com/definitions/_a456c121-de42-4e44-a739-8dfb182f6a11" id="_a456c121-de42-4e44-a739-8dfb182f6a11" name="Homework1" namespace="http://www.trisotech.com/definitions/_a456c121-de42-4e44-a739-8dfb182f6a11" exporter="Decision Modeler" exporterVersion="9.7.3" xml:lang="en" triso:logoChoice="Default">
+    <semantic:extensionElements/>
+    <semantic:itemDefinition name="w" label="w">
+        <semantic:typeRef>Any</semantic:typeRef>
+    </semantic:itemDefinition>
+    <semantic:decisionService id="_a456c121-de42-4e44-a739-8dfb182f6a11_DS" name="Whole Model Decision Service" triso:dynamicDecisionService="true" triso:wholeModelService="true">
+        <semantic:variable name="Whole Model Decision Service" id="_a456c121-de42-4e44-a739-8dfb182f6a11_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_b9574f99-a7c2-4ebb-8557-a97f75feeeed"/>
+        <semantic:encapsulatedDecision href="#_0e705557-6768-46ce-8a78-d19081ebc95d"/>
+        <semantic:inputData href="#_906b9751-08aa-4cb5-abe9-49d3d5b2d2b7"/>
+        <semantic:inputData href="#_3bb1fd6d-74e7-45a7-98a1-8b3a0b10c984"/>
+        <semantic:inputData href="#_3005ed26-082b-4513-9932-fb0639dda682"/>
+    </semantic:decisionService>
+    <semantic:decisionService id="_49877a43-06d3-40b4-9165-c29c72996a12_DS" name="Diagram Page 1" triso:dynamicDecisionService="true">
+        <semantic:variable name="Diagram Page 1" id="_49877a43-06d3-40b4-9165-c29c72996a12_DS_VAR" typeRef="Any"/>
+        <semantic:outputDecision href="#_b9574f99-a7c2-4ebb-8557-a97f75feeeed"/>
+        <semantic:encapsulatedDecision href="#_0e705557-6768-46ce-8a78-d19081ebc95d"/>
+        <semantic:inputData href="#_906b9751-08aa-4cb5-abe9-49d3d5b2d2b7"/>
+        <semantic:inputData href="#_3bb1fd6d-74e7-45a7-98a1-8b3a0b10c984"/>
+        <semantic:inputData href="#_3005ed26-082b-4513-9932-fb0639dda682"/>
+    </semantic:decisionService>
+    <semantic:decision id="_0e705557-6768-46ce-8a78-d19081ebc95d" name="Decide Profile" triso:readOnly="false">
+        <semantic:variable name="Decide Profile" id="_33f36793-aeb8-4521-9bc1-6aff9818cbd9" typeRef="string"/>
+        <semantic:informationRequirement id="_fac0539c-3184-4ed8-be3f-6ab9d2805332" triso:readOnly="false">
+            <semantic:requiredInput href="#_906b9751-08aa-4cb5-abe9-49d3d5b2d2b7"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_5f8cd708-7e4c-4ebc-be61-eaaa01728521" triso:readOnly="false">
+            <semantic:requiredInput href="#_3bb1fd6d-74e7-45a7-98a1-8b3a0b10c984"/>
+        </semantic:informationRequirement>
+        <semantic:decisionTable triso:descriptionVisible="false" id="_7cec2469-ca24-44b6-9899-00bcdaeca232" hitPolicy="PRIORITY" outputLabel="Decide Profile" typeRef="string" triso:expressionId="_e6a7dfc2-767e-48ff-8488-2de4f29796d7">
+            <semantic:input id="_6c417abe-169e-4b81-a442-3a7f44ce08a1" label="Degree">
+                <semantic:inputExpression typeRef="string">
+                    <semantic:text>Degree</semantic:text>
+                </semantic:inputExpression>
+                <semantic:inputValues triso:constraintsType="enumeration">
+                    <semantic:text>"Information Systems","Computer Science","Business Administration","other"</semantic:text>
+                </semantic:inputValues>
+            </semantic:input>
+            <semantic:input id="_459c9e65-0c76-49b1-8a54-4057334e678c" label="Grade">
+                <semantic:inputExpression typeRef="string">
+                    <semantic:text>Grade</semantic:text>
+                </semantic:inputExpression>
+                <semantic:inputValues triso:constraintsType="enumeration">
+                    <semantic:text>"A","B","C","D","E"</semantic:text>
+                </semantic:inputValues>
+            </semantic:input>
+            <semantic:output id="_ab226b7f-92f4-4ec3-b005-ac4761540ba2" triso:allowNull="true">
+                <semantic:outputValues triso:constraintsType="enumeration">
+                    <semantic:text>"Not Valid","Valid",null</semantic:text>
+                </semantic:outputValues>
+            </semantic:output>
+            <semantic:annotation name="Description"/>
+            <semantic:rule id="_fe51981d-7d3d-4c10-a5ea-c1f2fb915e4a">
+                <semantic:inputEntry id="_5f8ee70c-b212-4317-8726-ae43e4fb46f4">
+                    <semantic:text>"other"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_3b22e558-2272-4ffc-a7e0-5afcdd98c8ac">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_3d8d31d8-d457-4b39-bba9-cc3b0a6a82e8">
+                    <semantic:text>"Not Valid"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_00d507a8-1ee4-46f7-8a25-d185ae9346c0">
+                <semantic:inputEntry id="_db0ecf33-0988-42cf-acae-b82c4bb04b15">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_058153ec-6160-4d56-84d4-a3079bab413b">
+                    <semantic:text>"D", "E"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_7b79558b-fb63-452d-9473-1f438fb69d7b">
+                    <semantic:text>"Not Valid"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_6ebd9728-135b-451d-b9b1-95a8cf1c6b03">
+                <semantic:inputEntry id="_d732fea3-f11b-4da5-ba3a-52fab5b82edb">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_101d8a9b-bae3-442e-a457-95c004dd9be9">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_15fb387e-0f2e-43e3-9a35-1ad0b1707c86">
+                    <semantic:text>"Valid"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+        </semantic:decisionTable>
+    </semantic:decision>
+    <semantic:inputData id="_906b9751-08aa-4cb5-abe9-49d3d5b2d2b7" name="Degree" triso:readOnly="false">
+        <semantic:variable name="Degree" id="_ba73d5aa-2815-48f3-bd75-db70ee610314" typeRef="string"/>
+    </semantic:inputData>
+    <semantic:inputData id="_3bb1fd6d-74e7-45a7-98a1-8b3a0b10c984" name="Grade" triso:readOnly="false">
+        <semantic:variable name="Grade" id="_2e1f92c2-5784-481b-b00a-bc09dd947590" typeRef="string"/>
+    </semantic:inputData>
+    <semantic:knowledgeSource id="_8a0a153f-e61d-4759-88e3-9dd9356b8823" name="Business Administration" triso:readOnly="false">
+        <semantic:authorityRequirement id="_3686c2d9-d27b-4d23-8911-696f48f63e65" triso:readOnly="false">
+            <semantic:requiredDecision href="#_0e705557-6768-46ce-8a78-d19081ebc95d"/>
+        </semantic:authorityRequirement>
+    </semantic:knowledgeSource>
+    <semantic:decision id="_b9574f99-a7c2-4ebb-8557-a97f75feeeed" name="Decide Eligibility" triso:readOnly="false">
+        <semantic:variable name="Decide Eligibility" id="_eaa4a7de-29a8-42f5-9e26-b0e4225d7648" typeRef="string"/>
+        <semantic:informationRequirement id="_e742199c-1fcc-48f1-897f-b5c678be1656" triso:readOnly="false">
+            <semantic:requiredInput href="#_3005ed26-082b-4513-9932-fb0639dda682"/>
+        </semantic:informationRequirement>
+        <semantic:informationRequirement id="_b6365115-8d7f-4713-8d86-5a5ae3688a4f" triso:readOnly="false">
+            <semantic:requiredDecision href="#_0e705557-6768-46ce-8a78-d19081ebc95d"/>
+        </semantic:informationRequirement>
+        <semantic:decisionTable triso:descriptionVisible="false" id="_98ed0295-7edf-453f-8326-668a122d145f" hitPolicy="UNIQUE" outputLabel="Decide Eligibility" typeRef="string" triso:expressionId="_fd4caa9e-2fee-4a4d-ad1f-cb17f137e7cb">
+            <semantic:input id="_72ae5803-1e8c-4783-a4a2-2932f03a77e5" label="Professional Experience">
+                <semantic:inputExpression typeRef="number">
+                    <semantic:text>Professional Experience</semantic:text>
+                </semantic:inputExpression>
+            </semantic:input>
+            <semantic:input id="_f51b8d2b-acf3-4690-b9bf-d053f27c1d52" label="Decide Profile">
+                <semantic:inputExpression typeRef="string">
+                    <semantic:text>Decide Profile</semantic:text>
+                </semantic:inputExpression>
+                <semantic:inputValues triso:constraintsType="enumeration">
+                    <semantic:text>"Not Valid","Valid"</semantic:text>
+                </semantic:inputValues>
+            </semantic:input>
+            <semantic:output id="_7aef6152-70d9-45b5-b3a5-434ec0b9b8e6" triso:allowNull="true">
+                <semantic:outputValues triso:constraintsType="enumeration">
+                    <semantic:text>"Rejected","Enrol",null</semantic:text>
+                </semantic:outputValues>
+            </semantic:output>
+            <semantic:annotation name="Description"/>
+            <semantic:rule id="_9be70091-f3cb-4af7-b72d-e4f2e68e8c71">
+                <semantic:inputEntry id="_2914d873-c459-4fe9-a85d-c100e99fba36">
+                    <semantic:text>-</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_9192d66d-618e-47da-a350-e465bd73bb43">
+                    <semantic:text>"Not Valid"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_aa8f300f-d292-4859-930e-2cc6f417475b">
+                    <semantic:text>"Rejected"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_6a17c047-73ed-4f7d-931d-7859803bdca5">
+                <semantic:inputEntry id="_ae1c481c-db44-4e0a-b3f7-08c7d4691692">
+                    <semantic:text>&lt;6</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_41e628ee-c44b-4578-a6bf-481d19a3f920">
+                    <semantic:text>"Valid"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_3bb4da30-f61b-497e-998f-78a476fcd288">
+                    <semantic:text>"Rejected"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+            <semantic:rule id="_4e0ec4ac-9d2f-41d1-b267-19499f8b7f21">
+                <semantic:inputEntry id="_0a420002-f482-4db2-8f87-823d9d550187">
+                    <semantic:text>&gt;=6</semantic:text>
+                </semantic:inputEntry>
+                <semantic:inputEntry id="_5882f407-ad87-4751-84f6-127bdfdcd5a6">
+                    <semantic:text>"Valid"</semantic:text>
+                </semantic:inputEntry>
+                <semantic:outputEntry id="_0f5e9e1d-83ea-4136-bcd8-8acd134161e9">
+                    <semantic:text>"Enrol"</semantic:text>
+                </semantic:outputEntry>
+                <semantic:annotationEntry>
+                    <semantic:text/>
+                </semantic:annotationEntry>
+            </semantic:rule>
+        </semantic:decisionTable>
+    </semantic:decision>
+    <semantic:inputData id="_3005ed26-082b-4513-9932-fb0639dda682" name="Professional Experience" triso:readOnly="false">
+        <semantic:variable name="Professional Experience" id="_c17dc039-c878-4977-84ce-d629dac89ac9" typeRef="number"/>
+    </semantic:inputData>
+    <dmndi:DMNDI>
+        <dmndi:DMNDiagram id="_49877a43-06d3-40b4-9165-c29c72996a12" triso:modelElementRef="_0b75effd-68b6-4821-983d-a60d5ddd361e" name="Page 1">
+            <di:extension/>
+            <dmndi:Size height="1050" width="1485"/>
+            <dmndi:DMNShape id="_bcbdabff-923f-41b2-90c8-d0649cb3ae15" dmnElementRef="_0e705557-6768-46ce-8a78-d19081ebc95d">
+                <dc:Bounds x="519.0416701670803" y="373.53009959661" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_ca72615e-6edf-43f9-9cc1-7ca03d14de6f" dmnElementRef="_906b9751-08aa-4cb5-abe9-49d3d5b2d2b7">
+                <dc:Bounds x="430.8004970568951" y="482.53010936275166" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_024a0e3a-ed0c-4970-abbb-8d92a426142f" dmnElementRef="_3bb1fd6d-74e7-45a7-98a1-8b3a0b10c984">
+                <dc:Bounds x="626.8005015568259" y="482.5300982844252" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_989c92b2-95a3-4718-a08d-8dffdd52aa15" dmnElementRef="_8a0a153f-e61d-4759-88e3-9dd9356b8823">
+                <dc:Bounds x="241.13425351027357" y="368.551428401137" width="99.99999999999997" height="69.95735931396484"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_f334b718-081b-4158-9d21-70664d545a99" dmnElementRef="_b9574f99-a7c2-4ebb-8557-a97f75feeeed">
+                <dc:Bounds x="838.0416919559668" y="306.53009805836837" width="153" height="60"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNShape id="_c2a4e9bd-d32a-494b-b425-5a7c81e6c595" dmnElementRef="_3005ed26-082b-4513-9932-fb0639dda682">
+                <dc:Bounds x="846.8005405143374" y="416.8634250238656" width="135.48234176635742" height="60.00000762939453"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" trisodmn:defaultBounds="true"/>
+            </dmndi:DMNShape>
+            <dmndi:DMNEdge id="_72eedb91-8aa6-43b4-a334-f7021ef51ec9" dmnElementRef="_fac0539c-3184-4ed8-be3f-6ab9d2805332">
+                <di:waypoint x="498.5384693164166" y="482.53010936275166"/>
+                <di:waypoint x="595.5416701670803" y="433.53009959661"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_a65c4f9a-49af-4f17-92c8-a6dc1dcd731b" dmnElementRef="_5f8cd708-7e4c-4ebc-be61-eaaa01728521">
+                <di:waypoint x="694.5384738163474" y="482.5300982844252"/>
+                <di:waypoint x="595.5416701670803" y="433.53009959661"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_4bc543b5-731e-456d-a405-69c571fec98e" dmnElementRef="_3686c2d9-d27b-4d23-8911-696f48f63e65">
+                <di:waypoint x="519.0416701670803" y="403.53009959661"/>
+                <di:waypoint x="341.13425351027354" y="403.5301080581194"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_12c0ec45-480c-46fc-a7eb-afbd61a98eea" dmnElementRef="_e742199c-1fcc-48f1-897f-b5c678be1656">
+                <di:waypoint x="914.5385127738589" y="416.8634250238656"/>
+                <di:waypoint x="914.5416919559668" y="366.53009805836837"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0"/>
+            </dmndi:DMNEdge>
+            <dmndi:DMNEdge id="_c4816b25-3f6f-46c4-bbba-688c6cb36984" dmnElementRef="_b6365115-8d7f-4713-8d86-5a5ae3688a4f">
+                <di:waypoint x="672.0416701670803" y="393.53009959661"/>
+                <di:waypoint x="838.0416919559668" y="336.53009805836837"/>
+                <dmndi:DMNLabel sharedStyle="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0"/>
+            </dmndi:DMNEdge>
+        </dmndi:DMNDiagram>
+        <dmndi:DMNStyle id="LS_a456c121-de42-4e44-a739-8dfb182f6a11_0" fontFamily="arial,helvetica,sans-serif" fontSize="11" fontBold="false" fontItalic="false" fontUnderline="false" fontStrikeThrough="false"/>
+    </dmndi:DMNDI>
+</semantic:definitions>
