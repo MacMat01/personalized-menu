@@ -7,7 +7,7 @@ guest_profile(carnivor).
 guest_profile(vegetarian).
 guest_profile(vegan).
 guest_profile(fish_based).
-guest_profile(calorie_conscious).  % Added to cover calorie-conscious profile
+guest_profile(calorie_conscious).
 
 % Recognized allergies
 allergy(lactose).
@@ -94,7 +94,7 @@ type_ingredient(ham, meat).
 type_ingredient(sage, vegetable).
 type_ingredient(butter, dairy).
 type_ingredient(lady_fingers, cereal).
-type_ingredient(eggs, dairy).  % Alternatively, a separate category could be used
+type_ingredient(eggs, dairy).
 type_ingredient(mascarpone, dairy).
 type_ingredient(coffee, vegetable).
 type_ingredient(cocoa_powder, vegetable).
@@ -366,5 +366,3 @@ check_allergies([], _).
 check_allergies([Alg | Rest], Dish) :-
     \+ contains_allergy(Dish, Alg),
     check_allergies(Rest, Dish).
-
-
