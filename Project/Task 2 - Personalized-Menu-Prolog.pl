@@ -13,6 +13,7 @@ guest_profile(calorie_conscious).
 allergy(lactose).
 allergy(gluten).
 allergy(soy).
+allergy(fish).
 allergy(eggs).
 allergy(peanuts).
 allergy(tree_nuts).
@@ -263,6 +264,8 @@ contains_allergy(caprese_salad, lactose).
 
 contains_allergy(pumpkin_risotto, lactose).
 
+contains_allergy(grilled_salmon, fish).
+
 contains_allergy(panna_cotta, lactose).
 
 contains_allergy(octopus_salad, mollusks).
@@ -289,9 +292,10 @@ dish_calories(Dish, TotalCalories) :-
 % Main predicate: recommended_dish(Profiles, Allergies, Dish)
 % Profiles is a list of profiles that must all be satisfied.
 % Allergies is a list of allergens to avoid.
-recommended_dish(Profiles, Allergies, Dish) :-
+recommended_dish(Profile, Calories, Allergies, Dish) :-
     dish(Dish),
-    check_profiles(Profiles, Dish),
+    check_profiles(Profile, Dish),
+    check_calories(Calories, Dish),
     check_allergies(Allergies, Dish).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -299,10 +303,10 @@ recommended_dish(Profiles, Allergies, Dish) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % check_profiles(Profiles, Dish) succeeds if Dish satisfies every profile in the Profiles list.
-check_profiles([], _).
-check_profiles([Profile|Rest], Dish) :-
+check_profiles(Profile , Dish) :- check_profile(Profile, Dish), !.
+check_profiles(Profile, Dish) :-
     check_profile(Profile, Dish),
-    check_profiles(Rest, Dish).
+    check_profiles(Profile, Dish).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%              Profile-based Checks                  %%
@@ -311,13 +315,14 @@ check_profiles([Profile|Rest], Dish) :-
 % For a vegetarian: no ingredient of type meat must be present.
 check_profile(vegetarian, Dish) :-
     \+ ( contains_ingredient(Dish, Ingredient),
-         type_ingredient(Ingredient, meat)
+         (type_ingredient(Ingredient, meat) ; type_ingredient(Ingredient, fish))
        ).
 
 % For a vegan: no ingredient of type meat or dairy must be present.
 check_profile(vegan, Dish) :-
     \+ ( contains_ingredient(Dish, Ingredient),
-         ( type_ingredient(Ingredient, meat) ; type_ingredient(Ingredient, dairy) )
+         ( type_ingredient(Ingredient, meat) ; type_ingredient(Ingredient, dairy) ;
+         type_ingredient(Ingredient, fish))
        ).
 
 % For a carnivor: at least one ingredient of type meat should be present.
@@ -335,25 +340,25 @@ check_profile(fish_based, Dish) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % For a light (diet friendly) profile: the dish must be between 200 and 400 kcal.
-check_profile(light, Dish) :-
+check_calories(light, Dish) :-
     dish_calories(Dish, Total),
     Total >= 200,
     Total =< 400.
 
 % For a moderate (balanced) profile: the dish must be between 401 and 700 kcal.
-check_profile(moderate, Dish) :-
+check_calories(moderate, Dish) :-
     dish_calories(Dish, Total),
     Total > 400,
     Total =< 700.
 
 % For a hearty (energy rich) profile: the dish must be between 701 and 1000 kcal.
-check_profile(hearty, Dish) :-
+check_calories(hearty, Dish) :-
     dish_calories(Dish, Total),
     Total > 700,
     Total =< 1000.
 
 % For a high calorie profile: the dish must be above 1000 kcal.
-check_profile(high, Dish) :-
+check_calories(high, Dish) :-
     dish_calories(Dish, Total),
     Total > 1000.
 
@@ -366,3 +371,17 @@ check_allergies([], _).
 check_allergies([Alg | Rest], Dish) :-
     \+ contains_allergy(Dish, Alg),
     check_allergies(Rest, Dish).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%            Guests-Profile Registered                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% suggest_menu(NameGuest, Result) return a menu suggestion based on the user's preferences. Please, consider that
+% all the following queries rappresent a pre-built profiles with a set of fixed preferences. If you would obtain a
+% custom suggestion it's necessary to execute recommended_dish() query.
+
+suggest_menu("Samuele", Suggest) :- recommended_dish(_, light, _, Suggest).
+suggest_menu("Matteo", Suggest) :- recommended_dish(vegetarian, hearty, [eggs, gluten], Suggest).
+suggest_menu("Francesco", Suggest) :- recommended_dish(carnivor, high, _, Suggest).
+suggest_menu("Enrico", Suggest) :- recommended_dish(vegan, moderate, [lactose], Suggest).
+
