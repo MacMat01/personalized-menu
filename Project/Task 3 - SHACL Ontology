@@ -1,0 +1,95 @@
+@prefix :      <http://www.semanticweb.org/kebi.task3.pirani-machella#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+:DishShape a sh:NodeShape ;
+	sh:targetClass :Dish ; 
+    		sh:property [              
+        		sh:path :belongs_to_the ;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+    		];
+		sh:property [              
+        		sh:path :containsIngredient ;   
+		sh:minCount 1 ;    
+    		];
+		sh:property [              
+        		sh:path :suggested_for ;   
+		sh:minCount 1 ;    
+    		] ;
+		sh:property [              
+        		sh:path :inDesiredCaloriesProfile ;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+    		];
+		sh:property [              
+        		sh:path :hasTotalCalories ;
+		sh:datatype xsd:integer;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+		sh:minInclusive 0 ;
+    		] .
+		
+:IngredientShape a sh:NodeShape ;
+	sh:targetClass :Ingredient ; 
+    		sh:property [              
+        		sh:path :hasCalories ;
+		sh:datatype xsd:integer;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+		sh:minInclusive 0 ;
+    		] ;
+		sh:property [              
+        		sh:path :isContainedBy ;
+		sh:minCount 1 ;    
+    		] . 
+
+:CourseShape a sh:NodeShape ;
+	sh:targetClass :Course ; 
+		sh:property [              
+        		sh:path :course_includes ;
+		sh:minCount 1 ;    
+    		] .
+
+:FoodProfileShape a sh:NodeShape ;
+	sh:targetClass :FoodProfile ; 
+		sh:property [              
+        		sh:path :includeDishes ;
+		sh:minCount 1 ;    
+    		] .
+
+:CaloriesDesiredShape a sh:NodeShape ;
+	sh:targetClass :CaloriesDesired ;
+		sh:property [              
+        		sh:path :hasDesiredCaloriesDishes ;
+		sh:minCount 1 ;    
+    		] ; 
+		sh:property [              
+        		sh:path :hasMinCalories ;
+		sh:datatype xsd:integer;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+		sh:minInclusive 0 ;
+    		] ;
+		sh:property [              
+        		sh:path :hasMaxCalories ;
+		sh:datatype xsd:integer;   
+		sh:minCount 1 ;    
+        		sh:maxCount 1 ;
+		sh:minInclusive 0 ;
+    		] .
+
+:GuestShape a sh:NodeShape ;
+	sh:targetClass :Guest ; 
+		sh:property [              
+        		sh:path :guestHasFoodProfile ;
+		sh:maxCount 1 ;    
+    		] ;
+		sh:property [              
+        		sh:path :guestHasCaloriesDesired ;
+		sh:maxCount 1 ;    
+    		] .
+		
