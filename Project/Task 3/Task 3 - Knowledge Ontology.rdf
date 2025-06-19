@@ -1,0 +1,1229 @@
+@prefix : <http://www.semanticweb.org/kebi.task3.pirani-machella#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/kebi.task3.pirani-machella> .
+
+<http://www.semanticweb.org/kebi.task3.pirani-machella> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#allergyIsContained
+:allergyIsContained rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    owl:inverseOf :contains_allergy ;
+                    rdfs:domain :Allergy ;
+                    rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#belongs_to_the
+:belongs_to_the rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Dish ;
+                rdfs:range :Course .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#containsIngredient
+:containsIngredient rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    owl:inverseOf :isContainedBy ;
+                    rdfs:domain :Dish ;
+                    rdfs:range :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#contains_allergy
+:contains_allergy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Dish ;
+                  rdfs:range :Allergy .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#course_includes
+:course_includes rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Course ;
+                 rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#guestHasCaloriesDesired
+:guestHasCaloriesDesired rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdfs:domain :Guest ;
+                         rdfs:range :CaloriesDesired .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#guestHasFoodProfile
+:guestHasFoodProfile rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :Guest ;
+                     rdfs:range :FoodProfile .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#guestSufferFrom
+:guestSufferFrom rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Guest ;
+                 rdfs:range :Allergy .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasDesiredCaloriesDishes
+:hasDesiredCaloriesDishes rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain :CaloriesDesired ;
+                          rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasPersonalizedMenuDish
+:hasPersonalizedMenuDish rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         owl:inverseOf :inPersonalizedMenuOf ;
+                         rdfs:domain :Guest ;
+                         rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#inDesiredCaloriesProfile
+:inDesiredCaloriesProfile rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain :Dish ;
+                          rdfs:range :CaloriesDesired .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#inPersonalizedMenuOf
+:inPersonalizedMenuOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain :Dish ;
+                      rdfs:range :Guest .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#includeDishes
+:includeDishes rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :suggested_for ;
+               rdfs:domain :FoodProfile ;
+               rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#isContainedBy
+:isContainedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Ingredient ;
+               rdfs:range :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#suggested_for
+:suggested_for rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Dish ;
+               rdfs:range :FoodProfile .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasCalories
+:hasCalories rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Ingredient ;
+             rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasMaxCalories
+:hasMaxCalories rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :CaloriesDesired ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasMinCalories
+:hasMinCalories rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :CaloriesDesired ;
+                rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#hasTotalCalories
+:hasTotalCalories rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Dish ;
+                  rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Allergy
+:Allergy rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#CaloriesDesired
+:CaloriesDesired rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Cereal
+:Cereal rdf:type owl:Class ;
+        rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Course
+:Course rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Dairy
+:Dairy rdf:type owl:Class ;
+       rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Dish
+:Dish rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Fish
+:Fish rdf:type owl:Class ;
+      rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#FishDish
+:FishDish rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :containsIngredient ;
+                                owl:someValuesFrom :Fish
+                              ] ;
+          rdfs:subClassOf :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#FoodProfile
+:FoodProfile rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Guest
+:Guest rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Ingredient
+:Ingredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Meat
+:Meat rdf:type owl:Class ;
+      rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#MeatDish
+:MeatDish rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :containsIngredient ;
+                                owl:someValuesFrom :Meat
+                              ] ;
+          rdfs:subClassOf :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#VeganDish
+:VeganDish rdf:type owl:Class ;
+           rdfs:subClassOf :Dish .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Vegetable
+:Vegetable rdf:type owl:Class ;
+           rdfs:subClassOf :Ingredient .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#VegetarianDish
+:VegetarianDish rdf:type owl:Class ;
+                rdfs:subClassOf :Dish .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Appetizer
+:Appetizer rdf:type owl:NamedIndividual ,
+                    :Course ;
+           :course_includes :Caprese_Salad ,
+                            :Octopus_Salad ,
+                            :Tomato_Bruschetta .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Basil
+:Basil rdf:type owl:NamedIndividual ,
+                :Ingredient ,
+                :Vegetable ;
+       :isContainedBy :Caprese_Salad ,
+                      :Tomato_Bruschetta ;
+       :hasCalories 22 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Bechamel_sauce
+:Bechamel_sauce rdf:type owl:NamedIndividual ,
+                         :Dairy ,
+                         :Ingredient ;
+                :isContainedBy :Lasagna ;
+                :hasCalories 200 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Beef
+:Beef rdf:type owl:NamedIndividual ,
+               :Ingredient ,
+               :Meat ;
+      :isContainedBy :Lasagna ;
+      :hasCalories 450 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Bread
+:Bread rdf:type owl:NamedIndividual ,
+                :Cereal ,
+                :Ingredient ;
+       :isContainedBy :Tomato_Bruschetta ;
+       :hasCalories 250 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Breadcrumbs
+:Breadcrumbs rdf:type owl:NamedIndividual ,
+                      :Cereal ,
+                      :Ingredient ;
+             :isContainedBy :Milanese_Cutlet ;
+             :hasCalories 200 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Butter
+:Butter rdf:type owl:NamedIndividual ,
+                 :Dairy ,
+                 :Ingredient ;
+        :isContainedBy :Pumpkin_Risotto ,
+                       :Saltimbocca_Alla_Romana ;
+        :hasCalories 325 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Caprese_Salad
+:Caprese_Salad rdf:type owl:NamedIndividual ,
+                        :Dish ,
+                        :VegetarianDish ;
+               :belongs_to_the :Appetizer ;
+               :containsIngredient :Basil ,
+                                   :Mozzarella ,
+                                   :Olive_oil ,
+                                   :Tomato ;
+               :contains_allergy :Lactose ;
+               :hasTotalCalories 439 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Carnivor
+:Carnivor rdf:type owl:NamedIndividual ,
+                   :FoodProfile ;
+          :includeDishes :Lasagna ,
+                         :Milanese_Cutlet ,
+                         :Panna_Cotta ,
+                         :Saltimbocca_Alla_Romana .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Cocoa_powder
+:Cocoa_powder rdf:type owl:NamedIndividual ,
+                       :Ingredient ,
+                       :Vegetable ;
+              :isContainedBy :Tiramisu ;
+              :hasCalories 138 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Coffee
+:Coffee rdf:type owl:NamedIndividual ,
+                 :Ingredient ,
+                 :Vegetable ;
+        :isContainedBy :Tiramisu ;
+        :hasCalories 2 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Cream
+:Cream rdf:type owl:NamedIndividual ,
+                :Dairy ,
+                :Ingredient ;
+       :isContainedBy :Panna_Cotta ;
+       :hasCalories 340 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Dessert
+:Dessert rdf:type owl:NamedIndividual ,
+                  :Course ;
+         :course_includes :Panna_Cotta ,
+                          :Tiramisu .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Egg
+:Egg rdf:type owl:NamedIndividual ,
+              :Dairy ,
+              :Ingredient ;
+     :isContainedBy :Milanese_Cutlet ,
+                    :Tiramisu ;
+     :hasCalories 143 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Eggs
+:Eggs rdf:type owl:NamedIndividual ,
+               :Allergy ;
+      :allergyIsContained :Milanese_Cutlet ,
+                          :Tiramisu .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Enrico
+:Enrico rdf:type owl:NamedIndividual ,
+                 :Guest ;
+        :guestHasCaloriesDesired :Moderate ;
+        :guestHasFoodProfile :Vegan .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#First
+:First rdf:type owl:NamedIndividual ,
+                :Course ;
+       :course_includes :Lasagna ,
+                        :Pumpkin_Risotto ,
+                        :Seafood_Risotto .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Fish
+:Fish rdf:type owl:NamedIndividual ,
+               :Allergy ;
+      :allergyIsContained :Grilled_Salmon .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Fish_Based
+:Fish_Based rdf:type owl:NamedIndividual ,
+                     :FoodProfile ;
+            :includeDishes :Grilled_Salmon ,
+                           :Octopus_Salad ,
+                           :Seafood_Risotto .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Francesco
+:Francesco rdf:type owl:NamedIndividual ,
+                    :Guest ;
+           :guestHasCaloriesDesired :High ;
+           :guestHasFoodProfile :Carnivor .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Frying_oil
+:Frying_oil rdf:type owl:NamedIndividual ,
+                     :Ingredient ,
+                     :Vegetable ;
+            :isContainedBy :Milanese_Cutlet ;
+            :hasCalories 320 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Garlic
+:Garlic rdf:type owl:NamedIndividual ,
+                 :Ingredient ,
+                 :Vegetable ;
+        :isContainedBy :Seafood_Risotto ,
+                       :Tomato_Bruschetta ;
+        :hasCalories 149 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Gelatin
+:Gelatin rdf:type owl:NamedIndividual ,
+                  :Ingredient ,
+                  :Meat ;
+         :isContainedBy :Panna_Cotta ;
+         :hasCalories 10 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Gluten
+:Gluten rdf:type owl:NamedIndividual ,
+                 :Allergy ;
+        :allergyIsContained :Lasagna ,
+                            :Milanese_Cutlet ,
+                            :Tiramisu ,
+                            :Tomato_Bruschetta .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Grilled_Salmon
+:Grilled_Salmon rdf:type owl:NamedIndividual ,
+                         :Dish ,
+                         :FishDish ;
+                :belongs_to_the :Main ;
+                :containsIngredient :Lemon ,
+                                    :Olive_oil ,
+                                    :Rosemary ,
+                                    :Salmon ;
+                :contains_allergy :Fish ;
+                :hasTotalCalories 475 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Ham
+:Ham rdf:type owl:NamedIndividual ,
+              :Ingredient ,
+              :Meat ;
+     :isContainedBy :Saltimbocca_Alla_Romana ;
+     :hasCalories 150 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Hearty
+:Hearty rdf:type owl:NamedIndividual ,
+                 :CaloriesDesired ;
+        :hasMaxCalories 1000 ;
+        :hasMinCalories 700 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#High
+:High rdf:type owl:NamedIndividual ,
+               :CaloriesDesired ;
+      :hasMaxCalories 5000 ;
+      :hasMinCalories 1000 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Lactose
+:Lactose rdf:type owl:NamedIndividual ,
+                  :Allergy ;
+         :allergyIsContained :Caprese_Salad ,
+                             :Lasagna ,
+                             :Panna_Cotta ,
+                             :Pumpkin_Risotto ,
+                             :Saltimbocca_Alla_Romana ,
+                             :Tiramisu .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Lady_fingers
+:Lady_fingers rdf:type owl:NamedIndividual ,
+                       :Cereal ,
+                       :Ingredient ;
+              :isContainedBy :Tiramisu ;
+              :hasCalories 200 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Lasagna
+:Lasagna rdf:type owl:NamedIndividual ,
+                  :Dish ,
+                  :MeatDish ;
+         :belongs_to_the :First ;
+         :containsIngredient :Bechamel_sauce ,
+                             :Beef ,
+                             :Parmesan ,
+                             :Pasta_sheets ,
+                             :Tomato_sauce ;
+         :contains_allergy :Gluten ,
+                           :Lactose ;
+         :suggested_for :Carnivor ;
+         :hasTotalCalories 1563 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Lemon
+:Lemon rdf:type owl:NamedIndividual ,
+                :Ingredient ,
+                :Vegetable ;
+       :isContainedBy :Grilled_Salmon ;
+       :hasCalories 17 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Light
+:Light rdf:type owl:NamedIndividual ,
+                :CaloriesDesired ;
+       :hasMaxCalories 400 ;
+       :hasMinCalories 200 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Main
+:Main rdf:type owl:NamedIndividual ,
+               :Course ;
+      :course_includes :Grilled_Salmon ,
+                       :Milanese_Cutlet ,
+                       :Saltimbocca_Alla_Romana .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Mascarpone
+:Mascarpone rdf:type owl:NamedIndividual ,
+                     :Dairy ,
+                     :Ingredient ;
+            :isContainedBy :Tiramisu ;
+            :hasCalories 210 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Matteo
+:Matteo rdf:type owl:NamedIndividual ,
+                 :Guest ;
+        :guestHasCaloriesDesired :Hearty ;
+        :guestHasFoodProfile :Vegetarian ;
+        :guestSufferFrom :Eggs ,
+                         :Gluten .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Milanese_Cutlet
+:Milanese_Cutlet rdf:type owl:NamedIndividual ,
+                          :Dish ,
+                          :MeatDish ;
+                 :belongs_to_the :Main ;
+                 :containsIngredient :Breadcrumbs ,
+                                     :Egg ,
+                                     :Frying_oil ,
+                                     :Veal ;
+                 :contains_allergy :Eggs ,
+                                   :Gluten ;
+                 :suggested_for :Carnivor ;
+                 :hasTotalCalories 773 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Moderate
+:Moderate rdf:type owl:NamedIndividual ,
+                   :CaloriesDesired ;
+          :hasMaxCalories 700 ;
+          :hasMinCalories 400 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Mollusks
+:Mollusks rdf:type owl:NamedIndividual ,
+                   :Allergy ;
+          :allergyIsContained :Octopus_Salad ,
+                              :Seafood_Risotto .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Mozzarella
+:Mozzarella rdf:type owl:NamedIndividual ,
+                     :Dairy ,
+                     :Ingredient ;
+            :isContainedBy :Caprese_Salad ;
+            :hasCalories 280 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Mussels
+:Mussels rdf:type owl:NamedIndividual ,
+                  :Fish ,
+                  :Ingredient ;
+         :isContainedBy :Seafood_Risotto ;
+         :hasCalories 86 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Octopus
+:Octopus rdf:type owl:NamedIndividual ,
+                  :Fish ,
+                  :Ingredient ;
+         :isContainedBy :Octopus_Salad ;
+         :hasCalories 82 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Octopus_Salad
+:Octopus_Salad rdf:type owl:NamedIndividual ,
+                        :Dish ,
+                        :FishDish ;
+               :belongs_to_the :Appetizer ;
+               :containsIngredient :Octopus ,
+                                   :Olive_oil ,
+                                   :Parlsey ,
+                                   :Potato ;
+               :contains_allergy :Mollusks ;
+               :hasTotalCalories 314 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Olive_oil
+:Olive_oil rdf:type owl:NamedIndividual ,
+                    :Ingredient ,
+                    :Vegetable ;
+           :isContainedBy :Caprese_Salad ,
+                          :Grilled_Salmon ,
+                          :Octopus_Salad ;
+           :hasCalories 119 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Panna_Cotta
+:Panna_Cotta rdf:type owl:NamedIndividual ,
+                      :Dish ,
+                      :MeatDish ;
+             :belongs_to_the :Dessert ;
+             :containsIngredient :Cream ,
+                                 :Gelatin ,
+                                 :Sugar ,
+                                 :Vanilla ;
+             :contains_allergy :Lactose ;
+             :hasTotalCalories 749 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Parlsey
+:Parlsey rdf:type owl:NamedIndividual ,
+                  :Ingredient ,
+                  :Vegetable ;
+         :isContainedBy :Octopus_Salad ,
+                        :Seafood_Risotto ;
+         :hasCalories 36 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Parmesan
+:Parmesan rdf:type owl:NamedIndividual ,
+                   :Dairy ,
+                   :Ingredient ;
+          :isContainedBy :Lasagna ,
+                         :Pumpkin_Risotto ;
+          :hasCalories 413 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Pasta_sheets
+:Pasta_sheets rdf:type owl:NamedIndividual ,
+                       :Cereal ,
+                       :Ingredient ;
+              :isContainedBy :Lasagna ;
+              :hasCalories 350 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Peanuts
+:Peanuts rdf:type owl:NamedIndividual ,
+                  :Allergy .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Potato
+:Potato rdf:type owl:NamedIndividual ,
+                 :Ingredient ,
+                 :Vegetable ;
+        :isContainedBy :Octopus_Salad ;
+        :hasCalories 77 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Pumpkin
+:Pumpkin rdf:type owl:NamedIndividual ,
+                  :Ingredient ,
+                  :Vegetable ;
+         :isContainedBy :Pumpkin_Risotto ;
+         :hasCalories 26 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Pumpkin_Risotto
+:Pumpkin_Risotto rdf:type owl:NamedIndividual ,
+                          :Dish ,
+                          :VegetarianDish ;
+                 :belongs_to_the :First ;
+                 :containsIngredient :Butter ,
+                                     :Parmesan ,
+                                     :Pumpkin ,
+                                     :Rice ;
+                 :contains_allergy :Lactose ;
+                 :suggested_for :Vegetarian ;
+                 :hasTotalCalories 894 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Rice
+:Rice rdf:type owl:NamedIndividual ,
+               :Cereal ,
+               :Ingredient ;
+      :isContainedBy :Pumpkin_Risotto ,
+                     :Seafood_Risotto ;
+      :hasCalories 130 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Rosemary
+:Rosemary rdf:type owl:NamedIndividual ,
+                   :Ingredient ,
+                   :Vegetable ;
+          :isContainedBy :Grilled_Salmon ;
+          :hasCalories 131 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Sage
+:Sage rdf:type owl:NamedIndividual ,
+               :Ingredient ,
+               :Vegetable ;
+      :isContainedBy :Saltimbocca_Alla_Romana ;
+      :hasCalories 50 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Salmon
+:Salmon rdf:type owl:NamedIndividual ,
+                 :Fish ,
+                 :Ingredient ;
+        :isContainedBy :Grilled_Salmon ;
+        :hasCalories 208 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Saltimbocca_Alla_Romana
+:Saltimbocca_Alla_Romana rdf:type owl:NamedIndividual ,
+                                  :Dish ,
+                                  :MeatDish ;
+                         :belongs_to_the :Main ;
+                         :containsIngredient :Butter ,
+                                             :Ham ,
+                                             :Sage ,
+                                             :Veal ;
+                         :contains_allergy :Lactose ;
+                         :suggested_for :Carnivor ;
+                         :hasTotalCalories 635 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Samuele
+:Samuele rdf:type owl:NamedIndividual ,
+                  :Guest ;
+         :guestHasCaloriesDesired :Light .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Seafood_Risotto
+:Seafood_Risotto rdf:type owl:NamedIndividual ,
+                          :Dish ,
+                          :FishDish ;
+                 :belongs_to_the :First ;
+                 :containsIngredient :Garlic ,
+                                     :Mussels ,
+                                     :Parlsey ,
+                                     :Rice ,
+                                     :Shrimp ,
+                                     :Squid ;
+                 :contains_allergy :Mollusks ,
+                                   :Shellfish ;
+                 :hasTotalCalories 578 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Shellfish
+:Shellfish rdf:type owl:NamedIndividual ,
+                    :Allergy ;
+           :allergyIsContained :Seafood_Risotto .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Shrimp
+:Shrimp rdf:type owl:NamedIndividual ,
+                 :Fish ,
+                 :Ingredient ;
+        :isContainedBy :Seafood_Risotto ;
+        :hasCalories 85 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Soy
+:Soy rdf:type owl:NamedIndividual ,
+              :Allergy .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Squid
+:Squid rdf:type owl:NamedIndividual ,
+                :Fish ,
+                :Ingredient ;
+       :isContainedBy :Seafood_Risotto ;
+       :hasCalories 92 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Sugar
+:Sugar rdf:type owl:NamedIndividual ,
+                :Ingredient ,
+                :Vegetable ;
+       :isContainedBy :Panna_Cotta ;
+       :hasCalories 387 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Tiramisu
+:Tiramisu rdf:type owl:NamedIndividual ,
+                   :Dish ,
+                   :VegetarianDish ;
+          :belongs_to_the :Dessert ;
+          :containsIngredient :Cocoa_powder ,
+                              :Coffee ,
+                              :Egg ,
+                              :Lady_fingers ,
+                              :Mascarpone ;
+          :contains_allergy :Eggs ,
+                            :Gluten ,
+                            :Lactose ;
+          :inDesiredCaloriesProfile :Moderate ;
+          :suggested_for :Vegetarian ;
+          :hasTotalCalories 693 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Tomato
+:Tomato rdf:type owl:NamedIndividual ,
+                 :Ingredient ,
+                 :Vegetable ;
+        :isContainedBy :Caprese_Salad ,
+                       :Tomato_Bruschetta ;
+        :hasCalories 18 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Tomato_Bruschetta
+:Tomato_Bruschetta rdf:type owl:NamedIndividual ,
+                            :Dish ,
+                            :VeganDish ,
+                            :VegetarianDish ;
+                   :belongs_to_the :Appetizer ;
+                   :containsIngredient :Basil ,
+                                       :Bread ,
+                                       :Garlic ,
+                                       :Tomato ;
+                   :contains_allergy :Gluten ;
+                   :inDesiredCaloriesProfile :Moderate ;
+                   :suggested_for :Vegan ,
+                                  :Vegetarian ;
+                   :hasTotalCalories 439 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Tomato_sauce
+:Tomato_sauce rdf:type owl:NamedIndividual ,
+                       :Ingredient ,
+                       :Vegetable ;
+              :isContainedBy :Lasagna ;
+              :hasCalories 150 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Tree_nuts
+:Tree_nuts rdf:type owl:NamedIndividual ,
+                    :Allergy .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Vanilla
+:Vanilla rdf:type owl:NamedIndividual ,
+                  :Ingredient ,
+                  :Vegetable ;
+         :isContainedBy :Panna_Cotta ;
+         :hasCalories 12 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Veal
+:Veal rdf:type owl:NamedIndividual ,
+               :Ingredient ,
+               :Meat ;
+      :isContainedBy :Milanese_Cutlet ,
+                     :Saltimbocca_Alla_Romana ;
+      :hasCalories 110 .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Vegan
+:Vegan rdf:type owl:NamedIndividual ,
+                :FoodProfile ;
+       :includeDishes :Tomato_Bruschetta .
+
+
+###  http://www.semanticweb.org/kebi.task3.pirani-machella#Vegetarian
+:Vegetarian rdf:type owl:NamedIndividual ,
+                     :FoodProfile ;
+            :includeDishes :Caprese_Salad ,
+                           :Pumpkin_Risotto ,
+                           :Tiramisu ,
+                           :Tomato_Bruschetta .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cereal
+                :Dairy
+                :Fish
+                :Meat
+                :Vegetable
+              )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#d> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#totCal> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#min> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#p> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#max> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:c rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:d rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/x> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#x> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+<http://www.semanticweb.org/kebi.task3.pirani&machella#y> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce the in which calories profile a dish belongs to" ;
+   rdfs:label "inDesiredCaloriesProfile" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :CaloriesDesired ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :c
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDesiredCaloriesDishes ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :c ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> :d
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :inDesiredCaloriesProfile ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :d ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :c
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce dishes for fish based profile" ;
+   rdfs:label "Fish" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :FishDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Fish_Based
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce dishes for meat profile" ;
+   rdfs:label "Meat" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :MeatDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Carnivor
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce dishes for vegan profile" ;
+   rdfs:label "Vegan" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :VeganDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/x> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Vegan
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce Dish for vegan profile" ;
+   rdfs:label "Vegan" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :VeganDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Vegan
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce Dish for Vegetarian Profile" ;
+   rdfs:label "Vegetarian" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :VegetarianDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/x> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Vegetarian
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce for vegetarian profile" ;
+   rdfs:label "Vegetarian" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :VegetarianDish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :suggested_for ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :Vegetarian
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce which dishes include a course" ;
+   rdfs:label "course_includes" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :belongs_to_the ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#x> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#y>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :course_includes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#y> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce dish contained" ;
+   rdfs:label "isContained" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :containsIngredient ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#x> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#y>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :isContainedBy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#y> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce in which dishes is contained an allergy" ;
+   rdfs:label "AllergyIsContained" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :contains_allergy ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#x> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#y>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :allergyIsContained ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#y> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#x>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Deduce in which calories profile belong dishes" ;
+   rdfs:label "Deduce Calories Profile" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Dish ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d>
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#greaterThan> ;
+                                                                  <http://www.w3.org/2003/11/swrl#arguments> ( <http://www.semanticweb.org/kebi.task3.pirani&machella#totCal>
+                                                                                                               <http://www.semanticweb.org/kebi.task3.pirani&machella#min>
+                                                                                                             )
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasMinCalories ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p> ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#min>
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasMaxCalories ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#max>
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasTotalCalories ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#d> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#totCal>
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#lessThan> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> ( <http://www.semanticweb.org/kebi.task3.pirani&machella#totCal>
+                                                                                                                                                           <http://www.semanticweb.org/kebi.task3.pirani&machella#max>
+                                                                                                                                                         )
+                                                                                                            ] ;
+                                                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#classPredicate> :CaloriesDesired ;
+                                                                                                                         <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p>
+                                                                                                                       ] ;
+                                                                                                             rdf:rest rdf:nil
+                                                                                                           ]
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :hasDesiredCaloriesDishes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> <http://www.semanticweb.org/kebi.task3.pirani&machella#p> ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> <http://www.semanticweb.org/kebi.task3.pirani&machella#d>
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

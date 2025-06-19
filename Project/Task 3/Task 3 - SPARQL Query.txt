@@ -1,0 +1,94 @@
+[MAIN QUERY]
+
+PREFIX : <http://www.semanticweb.org/kebi.task3.pirani-machella#>
+
+SELECT ?dish ?course ?calories
+WHERE {
+
+  VALUES ?desiredFoodProfile {
+    :Vegetarian
+  }
+
+  VALUES ?desiredCalorieProfile {
+    :Moderate
+  }
+
+  VALUES ?excludedAllergy {
+    :Shellfish
+  }
+
+  ?dish a :Dish ;
+        :hasTotalCalories ?calories ;
+        :belongs_to_the ?course .
+
+  ?course a :Course .
+
+  ?dish :suggested_for ?foodprofile .
+  ?dish :inDesiredCaloriesProfile ?caloriesprofile . 
+
+  BIND(IF(?foodprofile = ?desiredFoodProfile, 1, 0) AS ?v1)
+  BIND(IF(?caloriesprofile = ?desiredCalorieProfile, 1, 0) AS ?v2)
+  BIND((?v1 * ?v2) AS ?suggestion)
+
+  FILTER(?suggestion > 0)
+
+  FILTER NOT EXISTS {
+    ?dish :contains_allergy ?excludedAllergy
+  }
+}
+
+---------------------------------------
+
+[SUGGEST MENU QUERY (FOR ALL GUESTS)]
+
+PREFIX : <http://www.semanticweb.org/kebi.task3.pirani-machella#>
+
+CONSTRUCT {
+  ?guest :hasPersonalizedMenuDish ?dish .
+}
+WHERE {
+  ?guest a :Guest .
+  ?dish a :Dish .
+
+  OPTIONAL { ?guest :guestHasFoodProfile ?fp . }
+  OPTIONAL { ?dish :suggested_for ?fp_d . }
+
+  OPTIONAL { ?guest :guestHasCaloriesDesired ?cp . }
+  OPTIONAL { ?dish :inDesiredCaloriesProfile ?cp_d . }
+
+  FILTER NOT EXISTS {
+    ?guest :guestSufferFrom ?a .
+    ?dish :contains_allergy ?a .
+  }
+
+  FILTER (!BOUND(?fp) || ?fp = ?fp_d)
+  FILTER (!BOUND(?cp) || ?cp = ?cp_d)
+}
+
+-----------------------------------------------------------
+
+[SUGGEST MENU QUERY (FOR A FIXED GUEST)]
+
+PREFIX : <http://www.semanticweb.org/kebi.task3.pirani-machella#>
+
+CONSTRUCT {
+  ?guest :hasPersonalizedMenuDish ?dish .
+}
+WHERE {
+  BIND(:Samuele AS ?guest)
+  ?dish a :Dish .
+
+  OPTIONAL { ?guest :guestHasFoodProfile ?fp . }
+  OPTIONAL { ?dish :suggested_for ?fp_d . }
+
+  OPTIONAL { ?guest :guestHasCaloriesDesired ?cp . }
+  OPTIONAL { ?dish :inDesiredCaloriesProfile ?cp_d . }
+
+  FILTER NOT EXISTS {
+    ?guest :guestSufferFrom ?a .
+    ?dish :contains_allergy ?a .
+  }
+
+  FILTER (!BOUND(?fp) || ?fp = ?fp_d)
+  FILTER (!BOUND(?cp) || ?cp = ?cp_d)
+}
