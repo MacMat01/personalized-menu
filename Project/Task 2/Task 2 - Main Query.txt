@@ -1,0 +1,36 @@
+PREFIX mod: <http://fhnw.ch/modelingEnvironment/ModelOntology#>
+PREFIX lo: <http://fhnw.ch/modelingEnvironment/LanguageOntology#>
+PREFIX : <http://www.semanticweb.org/kebi.task3.pirani-machella#>
+
+SELECT DISTINCT ?dish ?course ?calories
+  WHERE {
+    OPTIONAL {
+      mod:SelectPreferences_10f91f71-782b-4bdf-b70d-d6cf7bc49dc3 lo:FoodProfile ?fp .
+      BIND(IRI(CONCAT(STR(:), ?fp)) AS ?foodProfileIRI)
+    }
+    OPTIONAL {
+      mod:SelectPreferences_10f91f71-782b-4bdf-b70d-d6cf7bc49dc3 lo:CaloriesProfile ?cp .
+      BIND(IRI(CONCAT(STR(:), ?cp)) AS ?caloriesProfileIRI)
+    }
+
+    ?dish a :Dish ;
+          :hasTotalCalories ?calories ;
+          :belongs_to_the ?course .
+
+    ?course a :Course .
+
+    FILTER (
+      !BOUND(?foodProfileIRI) || EXISTS { ?dish :suggested_for ?foodProfileIRI }
+    )
+    FILTER (
+      !BOUND(?caloriesProfileIRI) || EXISTS { ?dish :inDesiredCaloriesProfile ?caloriesProfileIRI }
+    )
+  
+  FILTER NOT EXISTS {
+    mod:SelectPreferences_10f91f71-782b-4bdf-b70d-d6cf7bc49dc3 lo:Allergies ?ea .
+    BIND(IRI(CONCAT(STR(:), ?ea)) AS ?allergyIRI)
+    ?dish :contains_allergy ?allergyIRI
+  }
+
+  }
+  GROUP BY ?dish ?course ?calories
